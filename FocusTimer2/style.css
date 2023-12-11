@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 4rem; /* Faz o body ocupar toda a altura da tela */
+  /* Adiciona um pouco de espaço nas laterais */
+}
+
+.botoes > button {
+  padding: 2.5rem;
+  border: none;
+  border-radius: 1.5rem;
+  box-sizing: content-box;
+  max-width: 5rem;
+  max-height: 5rem;
+  font-size: 3rem;
+}
+
+.botoes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  max-width: 15rem;
+}
+
+#control-section {
+  display: flex;
+  gap: 10px;
+}
+
+#control-section > button {
+  border-radius: 5rem;
+  background-color: white;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+}
+.timer {
+  font-size: 5.2rem;
+  font-weight: 600;
+}
