@@ -5,6 +5,13 @@ import {
   adjustTimer,
 } from "./Focustimer/timer.js";
 
+import {
+  treeSound,
+  rainSound,
+  fireSound,
+  storeSound,
+} from "./Focustimer/sound.js";
+
 const minutesElement = document.getElementById("minutes");
 const secondsElement = document.getElementById("seconds");
 
@@ -48,6 +55,14 @@ function updateDisplay(newMinutes, newSeconds) {
   secondsElement.textContent = newSeconds.toString().padStart(2, "0");
 }
 
+// Quando o temporizador chegar a 0, pare todos os sons
 function onTimerEnd() {
-  // Adicionar a lógica desejada quando o temporizador atinge 0
+  treeSound.pause();
+  treeSound.currentTime = 0;
+  rainSound.pause();
+  rainSound.currentTime = 0;
+  fireSound.pause();
+  fireSound.currentTime = 0;
+  storeSound.pause();
+  storeSound.currentTime = 0;
 }
