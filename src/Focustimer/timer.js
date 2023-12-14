@@ -2,6 +2,7 @@ let timerInterval;
 let isTimerRunning = false;
 let totalTimeInSeconds;
 let pausedTimeInSeconds = 0;
+let currentSound = null;
 
 export function startTimer(totalTime, updateDisplay, onTimerEnd) {
   if (!isTimerRunning) {
@@ -59,4 +60,17 @@ export function adjustTimer(seconds, updateDisplay, onTimerEnd) {
     clearInterval(timerInterval);
     startTimer(totalTimeInSeconds, updateDisplay, onTimerEnd);
   }
+}
+
+function playSound(sound) {
+  // Se um som estiver tocando, pare-o
+  if (currentSound) {
+    currentSound.pause();
+    currentSound.currentTime = 0;
+  }
+
+  // Inicie o novo som
+  currentSound = sound;
+  currentSound.loop = true;
+  currentSound.play();
 }

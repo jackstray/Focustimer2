@@ -10,6 +10,7 @@ import {
   rainSound,
   fireSound,
   storeSound,
+  playSound, // Importe a função playSound
 } from "./Focustimer/sound.js";
 
 const minutesElement = document.getElementById("minutes");
@@ -25,6 +26,9 @@ playButton.addEventListener("click", () => {
     updateDisplay,
     onTimerEnd
   );
+
+  // Inicie o som associado ao botão playButton
+  playSound(treeSound); // Altere para o som desejado
 });
 
 pauseButton.addEventListener("click", () => {
@@ -57,12 +61,5 @@ function updateDisplay(newMinutes, newSeconds) {
 
 // Quando o temporizador chegar a 0, pare todos os sons
 function onTimerEnd() {
-  treeSound.pause();
-  treeSound.currentTime = 0;
-  rainSound.pause();
-  rainSound.currentTime = 0;
-  fireSound.pause();
-  fireSound.currentTime = 0;
-  storeSound.pause();
-  storeSound.currentTime = 0;
+  playSound(null); // Pare o som atual
 }

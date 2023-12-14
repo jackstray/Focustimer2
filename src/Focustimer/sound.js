@@ -3,39 +3,33 @@ export const rainSound = new Audio("assets/Chuva.wav");
 export const fireSound = new Audio("assets/Lareira.wav");
 export const storeSound = new Audio("assets/Cafeteria.wav");
 
-// Adicione ouvintes de eventos de clique a cada botão
-document.querySelector(".ph-tree").addEventListener("click", () => {
-  if (treeSound.paused) {
-    treeSound.play();
-  } else {
-    treeSound.pause();
-    treeSound.currentTime = 0;
+let currentSound = null;
+
+export function playSound(sound) {
+  // Se um som estiver tocando, pare-o
+  if (currentSound) {
+    currentSound.pause();
+    currentSound.currentTime = 0;
   }
+
+  // Inicie o novo som
+  currentSound = sound;
+  currentSound.loop = true;
+  currentSound.play();
+}
+
+document.querySelector(".ph-tree").addEventListener("click", () => {
+  playSound(treeSound);
 });
 
 document.querySelector(".ph-cloud-rain").addEventListener("click", () => {
-  if (rainSound.paused) {
-    rainSound.play();
-  } else {
-    rainSound.pause();
-    rainSound.currentTime = 0;
-  }
+  playSound(rainSound);
 });
 
 document.querySelector(".ph-fire").addEventListener("click", () => {
-  if (fireSound.paused) {
-    fireSound.play();
-  } else {
-    fireSound.pause();
-    fireSound.currentTime = 0;
-  }
+  playSound(fireSound);
 });
 
 document.querySelector(".ph-storefront").addEventListener("click", () => {
-  if (storeSound.paused) {
-    storeSound.play();
-  } else {
-    storeSound.pause();
-    storeSound.currentTime = 0;
-  }
+  playSound(storeSound);
 });
